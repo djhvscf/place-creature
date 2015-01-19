@@ -50,7 +50,7 @@ Author Homepage:      http://djhvscf.github.io/Blog/<br />
 | `refreshTime` | Integer that will represent the time in ms, minimum value `4000` | `4000` |
 
 
-**Demo:** 
+## Demo
 
 ## Known issues
 
