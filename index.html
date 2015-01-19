@@ -13,13 +13,14 @@
 				<label>Animal picture</label>
 				<div class="form-group" id="placeCreature">
 				</div>	
+				<img id="placeCreature1"></img>
 			</div>
         </div>
-        <script src="place-creature.js"></script>
+        <script src="src/place-creature.js"></script>
 		<script>
 			var placeCreature;
 	        (function() {
-				placeCreature = new placeCreature({width:200, height:200});
+				placeCreature = new placeCreature({width:200, height:200, refresh: true, refreshTime: 0});
 			})();
 			
         </script>

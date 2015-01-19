@@ -1,0 +1,28 @@
+{
+    "name": "place-creature",
+    "version": "1.0.0",
+    "title": "place-creature",
+    "description": "An API to get random animal pictures with custom width and height. No jQuery",
+    "author": {
+        "name": "Dennis Heránadez Vargas",
+        "email": "djhv92@hotmail.com",
+        "url": "http://djhvscf.github.io/Blog"
+    },
+    "licenses": [
+        {
+            "type": "MIT License",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "dependencies": {
+        
+    },
+    "keywords": ["place-creature.javascript"],
+    "homepage": "https://github.com/djhvscf/place-creature",
+    "demo": "",
+    "bugs": {
+        "url": "https://github.com/djhvscf/place-creature/issues"
+    },
+    "docs": "https://github.com/djhvscf/place-creature",
+    "download": "https://github.com/djhvscf/place-creature/releases"
+}

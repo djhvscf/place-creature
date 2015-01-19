@@ -1,0 +1,28 @@
+{
+  "name": "place-creature",
+  "version": "1.0.0",
+  "homepage": "https://github.com/djhvscf/place-creature",
+  "authors": [
+    "djhvscf <djhv92@hotmail.com>"
+  ],
+  "description": "An API to get random animal pictures with custom width and height. No jQuery.",
+  "main": [
+      "src/place-creature.js"
+  ],
+  "keywords": [
+    "place-creature",
+    "responsive",
+    "javaScript",
+	"plugin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "docs",
+    "assets"
+  ]
+}
