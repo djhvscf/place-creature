@@ -1,4 +1,4 @@
-# place-creature
+# place-creature [![Build Status](https://travis-ci.org/djhvscf/place-creature.svg?branch=master)](https://travis-ci.org/djhvscf/place-creature)
 An API to get random animal pictures with custom width and height. No jQuery
 
 Author Homepage:      http://djhvscf.github.io/Blog/<br />
