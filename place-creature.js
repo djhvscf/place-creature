@@ -2,7 +2,9 @@
 	
 	'use strict';
 
-		
+	var defaultURL = 'http://placecreature.com/',
+		xmlhttp
+
 	/**
 	 * Extends the properties between tow objects
 	 * @param {Object} a 
@@ -12,7 +14,7 @@
 	function extend( a, b ) {
 		for ( var key in b ) { 
 			if( b.hasOwnProperty( key ) ) {
-				a[ key ] = b[ key ];
+				a[ key ] = b[ key ];		
 			}
 		}
 		return a;
@@ -41,14 +43,34 @@
 	 * Options
 	 */
 	placeCreature.prototype.options = {
-		
+		width: 500,
+		height: 500
 	}
 	
 	/**
 	 * Initializes the plugin
 	 */
 	placeCreature.prototype._init = function() {
-		
+		defaultURL = defaultURL + this.options.width + this.options.height;
+		if (window.XMLHttpRequest)
+  		{
+  			// code for IE7+, Firefox, Chrome, Opera, Safari
+	  		xmlhttp=new XMLHttpRequest();
+	  	}
+		else {
+			// code for IE6, IE5
+	  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  	}
+
+	  	xmlhttp.onreadystatechange=function() {
+	  		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    	{
+	    		//To be implemented
+	    	}
+		}
+
+		xmlhttp.open("GET",defaultURL,true);
+		xmlhttp.send();
 	}
 
 	/**
