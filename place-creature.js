@@ -2,8 +2,8 @@
 	
 	'use strict';
 
-	var defaultURL = 'http://placecreature.com/',
-		xmlhttp
+	var defaultURL = 'http://placecreature.com',
+		defaultSeparator = '/'
 
 	/**
 	 * Extends the properties between tow objects
@@ -28,7 +28,6 @@
 		throw new Error( message === '' ? 'An error has been raised' : message );
 	}
 	
-	
 	/**
 	 * placeCreature class
 	 * @param {Object} options
@@ -43,6 +42,7 @@
 	 * Options
 	 */
 	placeCreature.prototype.options = {
+		target: 'placeCreature',
 		width: 500,
 		height: 500
 	}
@@ -51,26 +51,10 @@
 	 * Initializes the plugin
 	 */
 	placeCreature.prototype._init = function() {
-		defaultURL = defaultURL + this.options.width + this.options.height;
-		if (window.XMLHttpRequest)
-  		{
-  			// code for IE7+, Firefox, Chrome, Opera, Safari
-	  		xmlhttp=new XMLHttpRequest();
-	  	}
-		else {
-			// code for IE6, IE5
-	  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  	}
-
-	  	xmlhttp.onreadystatechange=function() {
-	  		if (xmlhttp.readyState==4 && xmlhttp.status==200)
-	    	{
-	    		//To be implemented
-	    	}
-		}
-
-		xmlhttp.open("GET",defaultURL,true);
-		xmlhttp.send();
+		defaultURL = defaultURL + defaultSeparator + this.options.width + defaultSeparator + this.options.height;
+		var animalPic = document.createElement("IMG");
+		animalPic.src = defaultURL;
+		document.getElementById(this.options.target).appendChild(animalPic);
 	}
 
 	/**

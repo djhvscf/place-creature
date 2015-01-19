@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>    
+        <title>place-creature Demos</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">       
+    </head>
+    <body>
+    	<div class="container">
+			<h1>place-creature Demos</h1>
+			<div class="form-group">
+				<label>Animal picture</label>
+				<div class="form-group" id="placeCreature">
+				</div>	
+			</div>
+        </div>
+        <script src="place-creature.js"></script>
+		<script>
+			var placeCreature;
+	        (function() {
+				placeCreature = new placeCreature({width:200, height:200});
+			})();
+			
+        </script>
+    </body>    
+</html>
