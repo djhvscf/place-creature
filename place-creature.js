@@ -54,6 +54,7 @@
 		defaultURL = defaultURL + defaultSeparator + this.options.width + defaultSeparator + this.options.height;
 		var animalPic = document.createElement("IMG");
 		animalPic.src = defaultURL;
+		animalPic.setAttribute( 'class', 'img-circle' ); //Using bootstrap 3.3.1
 		document.getElementById(this.options.target).appendChild(animalPic);
 	}
 
