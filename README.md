@@ -6,7 +6,7 @@ Supported by http://placecreature.com/
 Author Homepage:      http://djhvscf.github.io/Blog/<br />
 
 ## Current version
-* **v1.0.0** `19/Jan/2015`
+* **v1.0.5** `20/Jan/2015`
 
 ## Bugs & Enhancements (next version)
 
@@ -14,6 +14,7 @@ Author Homepage:      http://djhvscf.github.io/Blog/<br />
 
 | Version Number  | Date          |
 | --------------- | -----------   |
+| v1.0.5		  |	`20/Jan/2015` |
 | v1.0.0		  |	`19/Jan/2015` |
 
 ## Dependencies
@@ -51,6 +52,13 @@ Author Homepage:      http://djhvscf.github.io/Blog/<br />
 | `refresh` | True if you want to refresh the image every so often | `false` |
 | `refreshTime` | Integer that will represent the time in ms, minimum value `4000` | `4000` |
 
+**Methods**
+
+| Method | Description |
+| ----------| ----------- |
+| `stopRefresh` | If you set the `refresh` parameter `true` this method stops the automatic refresh|
+| `refreshPhoto` | Changes the photo manually |
+| `restore` | Restores the configuration with the first parameters |
 
 ## Demo
 

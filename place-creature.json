@@ -1,6 +1,6 @@
 {
     "name": "place-creature",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "title": "place-creature",
     "description": "An API to get random animal pictures with custom width and height. No jQuery",
     "author": {

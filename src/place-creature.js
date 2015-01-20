@@ -1,6 +1,6 @@
  /**
  * place-creature.js
- * @version: v1.0.0
+ * @version: v1.0.5
  * @author: Dennis Hernández
  * @webSite: http://djhvscf.github.io/Blog
  *
@@ -41,9 +41,10 @@
 		paramSeparator = '?q=',
 		allowElements = [ 'div', 'img' ],
 		minTimeRefresh = 4000,
+		picId = 'animalPic' + getRandomNumber(),
 		targetElement,
 		pic,
-		picID = 'animalPic' + Math.random()
+		interval;
 
 	/**
 	 * Extends the properties between two objects
@@ -82,6 +83,48 @@
 	function inArray( obj, array ) {
 		return array.indexOf( obj ) === -1 ? false : true;
 	}
+	
+	/**
+	 * Searches and returns an DOM element
+	 * @param {String} id 
+	 */
+	function getElementById( id ) {
+		return document.getElementById( id );
+	}
+	
+	/**
+	 * Creates a DOM Element
+	 * @param {String} nameElement
+	 */
+	function createElement( nameElement ) {
+		return document.createElement( nameElement );
+	}
+	
+	/**
+	 * Creates and returns the URL
+	 */
+	function getURL( width, height ) {
+		return defaultURL + defaultSeparator + width + defaultSeparator + height + paramSeparator + getRandomNumber();
+	}
+	
+	/**
+	 * Returns a random number
+	 */
+	function getRandomNumber() {
+		return Math.random();
+	}
+	
+	/**
+	 * Append or remove a child of the DOM element passed by parameter
+	 * @param {DOM Element} el
+	 */
+	function toggleChild( el ) {
+		var picToDelete = getElementById( picId );
+		if ( picToDelete ) {
+			el.removeChild( picToDelete );
+		}
+		el.appendChild( pic );
+	}
 		
 	/**
 	 * Raises an error
@@ -97,12 +140,11 @@
 	 * @param {Integer} height
 	 * @return {Image}  An image object
 	 */
-	function getImage( width, height) {
+	function getImage( width, height ) {
 		try {
-			var animalPic = document.createElement( 'img' );
-			animalPic.src = defaultURL + defaultSeparator + width + defaultSeparator + height + paramSeparator + Math.random();
-			animalPic.id = picID;
-			animalPic.setAttribute( 'class', 'img-circle' ); //Using bootstrap 3.3.1, only in development environment
+			var animalPic = createElement( 'img' );
+			animalPic.src = getURL( width, height );
+			animalPic.id = picId;
 			return animalPic;
 		} catch ( ex ) {
 			error( ex );
@@ -118,11 +160,7 @@
 		pic = getImage( width, height );
 		switch ( targetElement.nodeName.toLowerCase() ) {
 			case 'div':
-				var picToDelete = document.getElementById( picID );
-				if ( picToDelete ) {
-					targetElement.removeChild( picToDelete );
-				}
-				targetElement.appendChild( pic );
+				toggleChild( targetElement );
 			break;
 			case 'img':
 				targetElement.src = pic.src;
@@ -155,21 +193,44 @@
 	 * Initializes the plugin
 	 */
 	placeCreature.prototype._init = function() {
-		targetElement = document.getElementById(this.options.target);
+		targetElement = getElementById( this.options.target );
 		if ( is( targetElement ) ) {
 			setImage( targetElement, this.options.width, this.options.height );
 			if ( this.options.refresh ) {
 				if ( this.options.refreshTime < minTimeRefresh ) {
 					this.options.refreshTime = minTimeRefresh;
 				}
-				setInterval( 
+				interval = setInterval( 
 					function() {
-						setImage( targetElement, window.placeCreature.options.width, window.placeCreature.options.height ) 
+						setImage( targetElement, window.placeCreature.options.width, window.placeCreature.options.height );
 					}, this.options.refreshTime );
 			}
 		} else {
 			error( 'Target elements is not a div or an image' );
 		}
+	}
+	
+	/**
+	 * Clears the interval
+	 */
+	placeCreature.prototype.stopRefresh = function() {
+		if( interval ) {
+			clearInterval( interval );
+		}
+	}
+	
+	/**
+	 * Refresh the photo manually
+	 */
+	placeCreature.prototype.refreshPhoto = function() {
+		setImage( targetElement, this.options.width, this.options.height );
+	}
+	
+	/**
+	 * Restores the plugin with first parameters
+	 */
+	placeCreature.prototype.restore = function() {
+		this._init();
 	}
 
 	/**
