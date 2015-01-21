@@ -51,6 +51,7 @@ Author Homepage:      http://djhvscf.github.io/Blog/<br />
 | `height` | Integer that will represent the height of the image | `500` |
 | `refresh` | True if you want to refresh the image every so often | `false` |
 | `refreshTime` | Integer that will represent the time in ms, minimum value `4000` | `4000` |
+| `animal` | Animal name that will be show. See the list at http://placecreature.com/creatures | `` |
 
 **Methods**
 

@@ -44,7 +44,21 @@
 		picId = 'animalPic' + getRandomNumber(),
 		targetElement,
 		pic,
-		interval;
+		interval,
+		animals = ['Bald-eagle', 'Bear', 'Beaver', 'Beluga-whale', 
+					'Bill-murray', 'Bird', 'Blue-jay', 'Bluejay', 'Bunny', 'Calf',
+					'Cardinal', 'Cat', 'Cheetah', 'Chicken', 'Chimp', 'Chimpanzee',
+					'Chipmunk', 'Coon', 'Cow', 'Deer', 'Dinosaur', 'Dog', 'Doggy',
+					'Dolphin', 'Donkey', 'Eagle', 'Elephant', 'Fawn', 'Ferret',
+					'Fish', 'Flying-squirrel', 'Fox', 'Frog', 'Giraffe', 'Goat',
+					'Goldfish', 'Gorilla', 'Hedgehog', 'Hippo', 'Hippopotamus', 'Horse',
+					'Horsie', 'Kangaroo', 'Kitten', 'Kitty', 'Koala', 'Leopard', 'Lion',
+					'Monkey', 'Nicolas-cage', 'Orly', 'Otter', 'Owl', 'Panda', 'Panda-bear',
+					'Parrot', 'Penguin', 'Pig', 'Piglet', 'Polar-bear', 'Pony', 'Porpoise',
+					'Puppy', 'Python', 'Rabbit', 'Raccoon', 'Raptor', 'Red-panda', 'Rhino',
+					'Rhinoceros', 'Rooster', 'Salamander', 'Seal', 'Shark', 'Sheep', 'Snake',
+					'Squirrel', 'Sugar-glider', 'T-rex', 'Tortoise', 'Trex', 'Turtle', 'Tyrannosaurus-rex',
+					'Velociraptor', 'Whale', 'Yarly', 'Zebra'];
 
 	/**
 	 * Extends the properties between two objects
@@ -108,8 +122,15 @@
 	 * @param {Integer} height
 	 * @return {String} URL
 	 */
-	function getURL( width, height ) {
-		return defaultURL + defaultSeparator + width + defaultSeparator + height + paramSeparator + getRandomNumber();
+	function getURL( width, height, animal ) {
+		var URL = defaultURL + defaultSeparator  + width + defaultSeparator + height + paramSeparator + getRandomNumber();;
+		if( animal !== '' ) {
+			animal = animal.trim().replace(' ', '-');
+			if( inArray(animal, animals) ) {
+				URL = defaultURL + defaultSeparator + animal + defaultSeparator + width + defaultSeparator + height + paramSeparator + getRandomNumber(); 
+			}
+		}
+		return URL;
 	}
 	
 	/**
@@ -144,12 +165,13 @@
 	 * Get the image from placeCreature and create an Image object
 	 * @param {Integer} width
 	 * @param {Integer} height
+	 * @param {String} animal
 	 * @return {Image} Image
 	 */
-	function getImage( width, height ) {
+	function getImage( width, height, animal ) {
 		try {
 			var animalPic = createElement( 'img' );
-			animalPic.src = getURL( width, height );
+			animalPic.src = getURL( width, height, animal );
 			animalPic.id = picId;
 			return animalPic;
 		} catch ( ex ) {
@@ -162,9 +184,10 @@
 	 * @param {DOM Element} targetElement
 	 * @param {Integer} width
 	 * @param {Integer} height
+	 * @param {String} animal
 	 */
-	function setImage( targetElement, width, height ) {
-		pic = getImage( width, height );
+	function setImage( targetElement, width, height, animal ) {
+		pic = getImage( width, height, animal );
 		switch ( targetElement.nodeName.toLowerCase() ) {
 			case 'div':
 				toggleChild( targetElement );
@@ -193,7 +216,8 @@
 		width: 500,
 		height: 500,
 		refresh: false,
-		refreshTime: 4000
+		refreshTime: 4000,
+		animal: ''
 	}
 	
 	/**
@@ -202,14 +226,18 @@
 	placeCreature.prototype._init = function() {
 		targetElement = getElementById( this.options.target );
 		if ( is( targetElement ) ) {
-			setImage( targetElement, this.options.width, this.options.height );
+			setImage( targetElement, this.options.width, this.options.height, this.options.animal );
+			if ( this.options.animal !== '' ) {
+				this.options.refresh = false;
+				this.options.refreshTime = minTimeRefresh;
+			}
 			if ( this.options.refresh ) {
 				if ( this.options.refreshTime < minTimeRefresh ) {
 					this.options.refreshTime = minTimeRefresh;
 				}
 				interval = setInterval( 
 					function() {
-						setImage( targetElement, window.placeCreature.options.width, window.placeCreature.options.height );
+						setImage( targetElement, window.placeCreature.options.width, window.placeCreature.options.height, window.placeCreature.options.animal );
 					}, this.options.refreshTime );
 			}
 		} else {
@@ -230,7 +258,7 @@
 	 * Refresh the photo manually
 	 */
 	placeCreature.prototype.refreshPhoto = function() {
-		setImage( targetElement, this.options.width, this.options.height );
+		setImage( targetElement, this.options.width, this.options.height, this.options.animal );
 	}
 	
 	/**

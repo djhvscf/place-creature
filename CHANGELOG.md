@@ -2,6 +2,7 @@
 
 ### 1.x.x
 * Added `refreshParams` method
+* Added animals array and option
 
 ### 1.0.5
 * Added `stopRefresh` method
