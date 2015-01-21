@@ -59,6 +59,7 @@ Author Homepage:      http://djhvscf.github.io/Blog/<br />
 | `stopRefresh` | If you set the `refresh` parameter `true` this method stops the automatic refresh|
 | `refreshPhoto` | Changes the photo manually |
 | `restore` | Restores the configuration with the first parameters |
+| `refreshParams` | Refresh the parameters of the plugin |
 
 ## Demo
 

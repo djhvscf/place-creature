@@ -241,6 +241,14 @@
 	}
 
 	/**
+	 * Refresh the options with new options passed by parameter
+	 */
+	placeCreature.prototype.refreshParams = function( options ) {
+		extend( this.options, options );
+		this._init();
+	}
+
+	/**
 	 * Adds the plugin to namespace
 	 */
 	window.placeCreature = placeCreature;

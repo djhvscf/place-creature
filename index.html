@@ -18,6 +18,7 @@
 			<div class="form-group">
 				<button type="button" class="btn btn-info" onclick="restore()">Restore</button>
 				<button type="button" class="btn btn-success" onclick="refresh()">Refresh photo</button>
+				<button type="button" class="btn btn-default" onclick="refreshParams()">Refresh params</button>
 				<button type="button" class="btn btn-danger" onclick="stop()">Stop interval</button>		
 			</div>
 		</div>
@@ -38,6 +39,10 @@
 			
 			function restore() {
 				placeCreature.restore();
+			}
+
+			function refreshParams() {
+				placeCreature.refreshParams({width:200, height:200});
 			}
         </script>
     </body>    
