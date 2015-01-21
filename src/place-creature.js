@@ -87,6 +87,7 @@
 	/**
 	 * Searches and returns an DOM element
 	 * @param {String} id 
+	 * @return {DOM Element} DOM Element
 	 */
 	function getElementById( id ) {
 		return document.getElementById( id );
@@ -95,6 +96,7 @@
 	/**
 	 * Creates a DOM Element
 	 * @param {String} nameElement
+	 * @return {DOM Element} New DOM element
 	 */
 	function createElement( nameElement ) {
 		return document.createElement( nameElement );
@@ -102,6 +104,9 @@
 	
 	/**
 	 * Creates and returns the URL
+	 * @param {Integer} width
+	 * @param {Integer} height
+	 * @return {String} URL
 	 */
 	function getURL( width, height ) {
 		return defaultURL + defaultSeparator + width + defaultSeparator + height + paramSeparator + getRandomNumber();
@@ -109,6 +114,7 @@
 	
 	/**
 	 * Returns a random number
+	 * @return {Integer} Random number
 	 */
 	function getRandomNumber() {
 		return Math.random();
@@ -138,7 +144,7 @@
 	 * Get the image from placeCreature and create an Image object
 	 * @param {Integer} width
 	 * @param {Integer} height
-	 * @return {Image}  An image object
+	 * @return {Image} Image
 	 */
 	function getImage( width, height ) {
 		try {
@@ -154,7 +160,8 @@
 	/**
 	 * Set the image to target element
 	 * @param {DOM Element} targetElement
-	 * @param {Iamge} pic
+	 * @param {Integer} width
+	 * @param {Integer} height
 	 */
 	function setImage( targetElement, width, height ) {
 		pic = getImage( width, height );
