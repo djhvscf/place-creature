@@ -128,6 +128,8 @@
 			animal = animal.trim().replace(' ', '-');
 			if( inArray(animal, animals) ) {
 				URL = defaultURL + defaultSeparator + animal + defaultSeparator + width + defaultSeparator + height + paramSeparator + getRandomNumber(); 
+			} else {
+				erro( 'The animal name does not exist' );
 			}
 		}
 		return URL;
