@@ -82,7 +82,7 @@
 	 */
 	function is( el ) {
 		if ( !el ) {
-			error( 'There is no an element with that id' );
+			error( 'There is no an element in the DOM with that id' );
 		} else {
 			return inArray( el.nodeName.toLowerCase(), allowElements );
 		}
